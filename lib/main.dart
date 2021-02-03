@@ -93,208 +93,256 @@ class MyHomePage extends StatelessWidget {
         backgroundColor: Color(0xFF753ff5),
         body: Center(
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              SizedBox(
-                height: 60,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  ClipRRect(
-                    borderRadius: BorderRadius.circular(22),
-                    child: Container(
-                      child: Icon(
-                        CupertinoIcons.money_dollar,
-                        color: Colors.white,
-                        size: 32,
-                      ),
-                      padding: EdgeInsets.all(12),
-                      color: Color(0XFF6939dd),
-                    ),
-                  ),
-                  SizedBox(
-                    width: 12,
-                  ),
-                  ValueListenableBuilder(
-                    valueListenable: _amountToDisplay,
-                    builder: (context, String value, child) => Text(
-                      value == '' ? '0' : formatFigure('$value'),
-                      style: TextStyle(
-                        fontFamily: 'MuseoSans',
-                        fontSize: 58,
-                        color: value == ''
-                            ? Colors.white.withOpacity(0.5)
-                            : Colors.white,
-                        fontWeight: FontWeight.w900,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-              SizedBox(
-                height: 20,
-              ),
-              SizedBox(
-                width: 150,
-                height: 34,
-                child: Container(
-                  alignment: Alignment.center,
-                  child: TextField(
-                    style: TextStyle(
-                      color: Colors.white,
-                    ),
-                    decoration: new InputDecoration(
-                      border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(40),
-                          borderSide: BorderSide(
-                            color: Colors.white,
-                          )),
-                      contentPadding: EdgeInsets.only(
-                        bottom: 20 / 2, // HERE THE IMPORTANT PART
-                      ),
-                      filled: true,
-                      fillColor: Color(0XFF804ef3),
-                      hintStyle: new TextStyle(color: Colors.white),
-                      hintText: "What is it for?",
-                      enabled: true,
-                      focusColor: Colors.red,
-                      enabledBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(40),
-                          borderSide: BorderSide(
-                            color: Colors.white,
-                          )),
-                      focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(40),
-                          borderSide: BorderSide(
-                            color: Colors.white,
-                          )),
-                    ),
-                    textAlign: TextAlign.center,
-                  ),
-                ),
-              ),
-              SizedBox(
-                height: 20,
-              ),
+              // Spacer(
+              // ),
               Expanded(
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 50),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Number(
-                            amountToDisplay: '1',
-                            onTap: () {
-                              _amountToDisplay.value =
-                                  updateFigure(_amountToDisplay.value, '1');
-                            },
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        ClipRRect(
+                          borderRadius: BorderRadius.circular(22),
+                          child: Container(
+                            child: Icon(
+                              CupertinoIcons.money_dollar,
+                              color: Colors.white,
+                              size: 32,
+                            ),
+                            padding: EdgeInsets.all(12),
+                            color: Color(0XFF6939dd),
                           ),
-                          Number(
-                            amountToDisplay: '4',
-                            onTap: () {
-                              _amountToDisplay.value =
-                                  updateFigure(_amountToDisplay.value, '4');
-                            },
-                          ),
-                          Number(
-                            amountToDisplay: '7',
-                            onTap: () {
-                              _amountToDisplay.value =
-                                  updateFigure(_amountToDisplay.value, '7');
-                            },
-                          ),
-                          Number(
-                            amountToDisplay: '00',
-                            onTap: () {
-                              _amountToDisplay.value =
-                                  updateFigure(_amountToDisplay.value, '00');
-                            },
-                          ),
-                        ],
-                      ),
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Number(
-                            amountToDisplay: '2',
-                            onTap: () {
-                              _amountToDisplay.value =
-                                  updateFigure(_amountToDisplay.value, '2');
-                            },
-                          ),
-                          Number(
-                            amountToDisplay: '5',
-                            onTap: () {
-                              _amountToDisplay.value =
-                                  updateFigure(_amountToDisplay.value, '5');
-                            },
-                          ),
-                          Number(
-                            amountToDisplay: '8',
-                            onTap: () {
-                              _amountToDisplay.value =
-                                  updateFigure(_amountToDisplay.value, '8');
-                            },
-                          ),
-                          Number(
-                            amountToDisplay: '0',
-                            onTap: () {
-                              _amountToDisplay.value =
-                                  updateFigure(_amountToDisplay.value, '0');
-                            },
-                          ),
-                        ],
-                      ),
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Number(
-                            amountToDisplay: '3',
-                            onTap: () {
-                              _amountToDisplay.value =
-                                  updateFigure(_amountToDisplay.value, '3');
-                            },
-                          ),
-                          Number(
-                            amountToDisplay: '6',
-                            onTap: () {
-                              _amountToDisplay.value =
-                                  updateFigure(_amountToDisplay.value, '6');
-                            },
-                          ),
-                          Number(
-                            amountToDisplay: '9',
-                            onTap: () {
-                              _amountToDisplay.value =
-                                  updateFigure(_amountToDisplay.value, '9');
-                            },
-                          ),
-                          //Text('<', style: kKeyPadStyle),
-                          GestureDetector(
-                            onTap: () {
-                              _amountToDisplay.value =
-                                  removeLastCharacter(_amountToDisplay.value);
-                            },
-                            child: Padding(
-                              padding: const EdgeInsets.all(20.0),
-                              child: Icon(
-                                Icons.arrow_back_ios_rounded,
-                                size: 28,
-                                color: Colors.white,
-                              ),
+                        ),
+                        SizedBox(
+                          width: 12,
+                        ),
+                        ValueListenableBuilder(
+                          valueListenable: _amountToDisplay,
+                          builder: (context, String value, child) => Text(
+                            value == '' ? '0' : formatFigure('$value'),
+                            style: TextStyle(
+                              fontFamily: 'MuseoSans',
+                              fontSize: 58,
+                              color: value == ''
+                                  ? Colors.white.withOpacity(0.5)
+                                  : Colors.white,
+                              fontWeight: FontWeight.w900,
                             ),
                           ),
+                        ),
+                      ],
+                    ),
+                    SizedBox(
+                      height: 15,
+                    ),
+                    SizedBox(
+                      width: 150,
+                      height: 34,
+                      child: Container(
+                        alignment: Alignment.center,
+                        child: TextField(
+                          style: TextStyle(
+                            color: Colors.white,
+                          ),
+                          decoration: new InputDecoration(
+                            border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(40),
+                                borderSide: BorderSide(
+                                  color: Colors.white,
+                                )),
+                            contentPadding: EdgeInsets.only(
+                              bottom: 20 / 2, // HERE THE IMPORTANT PART
+                            ),
+                            filled: true,
+                            fillColor: Color(0XFF804ef3),
+                            hintStyle: new TextStyle(color: Colors.white),
+                            hintText: "What is it for?",
+                            enabled: true,
+                            focusColor: Colors.red,
+                            enabledBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(40),
+                                borderSide: BorderSide(
+                                  color: Colors.white,
+                                )),
+                            focusedBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(40),
+                                borderSide: BorderSide(
+                                  color: Colors.white,
+                                )),
+                          ),
+                          textAlign: TextAlign.center,
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 50),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Column(
+                            //mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Number(
+                                amountToDisplay: '1',
+                                onTap: () {
+                                  _amountToDisplay.value =
+                                      updateFigure(_amountToDisplay.value, '1');
+                                },
+                              ),
+                              Number(
+                                amountToDisplay: '4',
+                                onTap: () {
+                                  _amountToDisplay.value =
+                                      updateFigure(_amountToDisplay.value, '4');
+                                },
+                              ),
+                              Number(
+                                amountToDisplay: '7',
+                                onTap: () {
+                                  _amountToDisplay.value =
+                                      updateFigure(_amountToDisplay.value, '7');
+                                },
+                              ),
+                              Number(
+                                amountToDisplay: '00',
+                                onTap: () {
+                                  _amountToDisplay.value =
+                                      updateFigure(_amountToDisplay.value, '00');
+                                },
+                              ),
+                            ],
+                          ),
+                          Column(
+                            //mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Number(
+                                amountToDisplay: '2',
+                                onTap: () {
+                                  _amountToDisplay.value =
+                                      updateFigure(_amountToDisplay.value, '2');
+                                },
+                              ),
+                              Number(
+                                amountToDisplay: '5',
+                                onTap: () {
+                                  _amountToDisplay.value =
+                                      updateFigure(_amountToDisplay.value, '5');
+                                },
+                              ),
+                              Number(
+                                amountToDisplay: '8',
+                                onTap: () {
+                                  _amountToDisplay.value =
+                                      updateFigure(_amountToDisplay.value, '8');
+                                },
+                              ),
+                              Number(
+                                amountToDisplay: '0',
+                                onTap: () {
+                                  _amountToDisplay.value =
+                                      updateFigure(_amountToDisplay.value, '0');
+                                },
+                              ),
+                            ],
+                          ),
+                          Column(
+                            //mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Number(
+                                amountToDisplay: '3',
+                                onTap: () {
+                                  _amountToDisplay.value =
+                                      updateFigure(_amountToDisplay.value, '3');
+                                },
+                              ),
+                              Number(
+                                amountToDisplay: '6',
+                                onTap: () {
+                                  _amountToDisplay.value =
+                                      updateFigure(_amountToDisplay.value, '6');
+                                },
+                              ),
+                              Number(
+                                amountToDisplay: '9',
+                                onTap: () {
+                                  _amountToDisplay.value =
+                                      updateFigure(_amountToDisplay.value, '9');
+                                },
+                              ),
+                              //Text('<', style: kKeyPadStyle),
+                              // GestureDetector(
+                              //   onTap: () {
+                              //     _amountToDisplay.value =
+                              //         removeLastCharacter(_amountToDisplay.value);
+                              //   },
+                              //   child: Padding(
+                              //     padding: const EdgeInsets.only(
+                              //       bottom: 30
+                              //     ),
+                              //     child: Icon(
+                              //       Icons.arrow_back_ios_rounded,
+                              //       size: 28,
+                              //       color: Colors.white,
+                              //     ),
+                              //   ),
+                              // ),
+                              // Container(
+                              //   margin: const EdgeInsets.only(bottom: 10),
+                              //   child: InkWell(
+                              //       onTap: () {
+                              //         _amountToDisplay.value =
+                              //             removeLastCharacter(_amountToDisplay.value);
+                              //       },
+                              //     borderRadius: BorderRadius.all(Radius.circular(40)),
+                              //     child: Padding(
+                              //       padding: const EdgeInsets.all(15.0),
+                              //       child: Text('<',
+                              //           style: TextStyle(
+                              //             fontFamily: 'MuseoSans',
+                              //             fontSize: 28,
+                              //             fontWeight: FontWeight.w700,
+                              //             color: Colors.white,
+                              //           )),
+                              //     ),
+                              //   ),
+                              // ),
+                              Container(
+                                margin: const EdgeInsets.only(bottom: 10),
+                                child: InkWell(
+                                  onTap: () {
+                                    _amountToDisplay.value =
+                                        removeLastCharacter(_amountToDisplay.value);
+                                  },
+                                  borderRadius: BorderRadius.all(Radius.circular(40)),
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(15.0),
+                                    child: Icon(
+                                      Icons.arrow_back_ios_rounded,
+                                      size: 28,
+                                      color: Colors.white,
+
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ]
+                            ,
+                          ),
                         ],
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
               ),
+
               SizedBox(
-                height: 60,
+                height: 24,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -340,7 +388,7 @@ class MyHomePage extends StatelessWidget {
                 ],
               ),
               SizedBox(
-                height: 18,
+                height: 24,
               ),
             ],
           ),
@@ -452,12 +500,13 @@ class Number extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      onTap: onTap,
-      borderRadius: BorderRadius.all(Radius.circular(40)),
-      child: Container(
+    return Container(
+      margin: const EdgeInsets.only(bottom: 10),
+      child: InkWell(
+        onTap: onTap,
+        borderRadius: BorderRadius.all(Radius.circular(40)),
         child: Padding(
-          padding: const EdgeInsets.all(20.0),
+          padding: const EdgeInsets.all(15.0),
           child: Text(amountToDisplay,
               style: TextStyle(
                 fontFamily: 'MuseoSans',
